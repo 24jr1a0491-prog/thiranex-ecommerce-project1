@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>E-Commerce Store</title>
+</head>
+<body>
+<h1>Online Store</h1>
+
+<div id="products"></div>
+
+<script>
+fetch('http://localhost:5000/api/products')
+.then(res => res.json())
+.then(data => {
+  let output = "";
+  data.forEach(product => {
+    output += `
+      <h3>${product.name}</h3>
+      <p>₹${product.price}</p>
+      <button>Add to Cart</button>
+    `;
+  });
+  document.getElementById("products").innerHTML = output;
+});
+</script>
+
+</body>
+</html>
